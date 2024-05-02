@@ -21,6 +21,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Automatic Garbage Collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d"
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -52,11 +59,19 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
+  # 23.11 Configure keymap in X11
+  # services.xserver = {
+  #   layout = "us";
+  #   xkbVariant = "";
+  # };
+  
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -115,6 +130,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    gnome.seahorse
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

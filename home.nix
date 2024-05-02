@@ -15,6 +15,24 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = with pkgs; [
+    brave
+    # google-chrome
+    git
+    vscode
+    protonvpn-gui
+    spotify
+    zoom-us
+
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.vitals
+    gnomeExtensions.workspaces-indicator-by-open-apps
+    gnome.dconf-editor
+    gnome.gnome-tweaks
+  ];
+
   # GNOME Settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -28,18 +46,44 @@
       switch-to-workspace-left=["<Control><Super>Left"];
       switch-to-workspace-right=["<Control><Super>Right"];
     };
+    "org/gnome/desktop/notifications" = {
+      show-in-lock-screen = false;
+    };
+    "org/gnome/desktop/background" = {
+      "color-shading-type"="solid";
+      "picture-options"="zoom";
+      "picture-uri"="file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+      "picture-uri-dark"="file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
+      "primary-color"="#241f31";
+      "secondary-color"="#000000";
+    };  
     "org/gnome/mutter" = {
       edge-tiling=true;
+    };
+    "ca/desrt/dconf-editor" = {
+      show-warning=false;
+    };
+    "org/gnome/Console" = {
+      custom-font="Source Code Pro 11";
+      last-window-size="(652, 480)";
+      theme="night";
+      use-system-font=false;
     };
     "org/gnome/shell".favorite-apps = [
       "brave-browser.desktop"
       "org.gnome.Console.desktop"
+      # "Alacritty.desktop"
       "code.desktop"
+      "spotify.desktop"
     ];
     "org/gnome/shell".enabled-extensions = [
       "blur-my-shell@aunetx"
       "Vitals@CoreCoding.com"
+      "workspaces-by-open-apps@favo02.github.com"
     ];
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui=["<Super><Shift>S"];
+    };
     "org/gnome/shell/extensions/blur-my-shell" = {
         "noise-amount" = 0.080000000000000002;
     };
@@ -52,9 +96,21 @@
           "__temperature_avg__"
         ];
     };
+    "org/gnome/shell/extensions/workspaces-indicator-by-open-apps" = {
+      "apps-all-desaturate" = false;
+      "hide-activities-button"=true;
+      "icons-group"="OFF";
+      "indicator-round-borders"=false;
+      "indicator-show-active-workspace"=true;
+      "indicator-use-custom-names"=false;
+      "position-in-panel"="LEFT";
+      "position-index"=0;
+      "scroll-inverse"=false;
+      "scroll-wraparound"=true;
+    };
   };
 
-  # Git config
+  # git config
   programs.git = {
     enable = true;
     userName = "cnlawrence";
@@ -65,39 +121,24 @@
     };
   };
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    brave
-    google-chrome
-    git
-    vscode
-    protonvpn-gui
-    # youtube-music
-    spotify
-
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.vitals
-  ];
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
+  # plain files is through "home.file".
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # Building this configuration will create a copy of "dotfiles/screenrc" in
+    # # the Nix store. Activating the configuration will then make "~/.screenrc" a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
+    # ".gradle/gradle.properties".text = ""
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # "";
   };
 
   # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
+  # "home.sessionVariables". If you don"t want to manage your shell through Home
+  # Manager then you have to manually source "hm-session-vars.sh" located at
   # either
   #
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
