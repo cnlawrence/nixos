@@ -81,8 +81,15 @@
       "Vitals@CoreCoding.com"
       "workspaces-by-open-apps@favo02.github.com"
     ];
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      home=["<Super>e"];
+      search=["<Super>q"];
+    };
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui=["<Super><Shift>S"];
+    };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden=true;
     };
     "org/gnome/shell/extensions/blur-my-shell" = {
         "noise-amount" = 0.080000000000000002;
@@ -95,6 +102,7 @@
           "_storage_free_"
           "__temperature_avg__"
         ];
+        unit=1;
     };
     "org/gnome/shell/extensions/workspaces-indicator-by-open-apps" = {
       "apps-all-desaturate" = false;
