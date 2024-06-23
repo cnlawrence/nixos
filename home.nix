@@ -41,6 +41,7 @@
     "org/gnome/desktop/peripherals/touchpad" = {
       natural-scroll=false;
       tap-to-click=true;
+      click-method="areas";
     };
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-left=["<Control><Super>Left"];
