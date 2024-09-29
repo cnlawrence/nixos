@@ -101,14 +101,9 @@
   users.users.clawrence = {
     isNormalUser = true;
     description = "Chris Lawrence";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [      
-      # brave
-      # google-chrome
-      # git
-      # vscode
-      # protonvpn-gui
-      # spotify
+      # packages declared in home.nix
     ];
   };
 
@@ -131,6 +126,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     gnome.seahorse
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -151,6 +147,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # networking.firewall.allowedTCPPorts = [ 8080 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

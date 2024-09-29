@@ -24,7 +24,7 @@
     vscode
     protonvpn-gui
     spotify
-    zoom-us
+    qbittorrent
 
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals
