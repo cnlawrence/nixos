@@ -16,7 +16,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "starscream"; # Define your hostname.
+  networking.hostName = "ravage"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -107,15 +107,6 @@
     ];
   };
 
-  home-manager = {
-    # also pass inputs to home-manager modules
-    extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users = {
-      "clawrence" = import ./home.nix;
-    };
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -125,8 +116,10 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    gnome.seahorse
-    htop
+    seahorse
+    btop
+    iotop
+    iftop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
