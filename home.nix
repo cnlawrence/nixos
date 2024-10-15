@@ -26,11 +26,16 @@
     spotify
     qbittorrent
 
+    # Cmd Utils
+    # Networking
+    dnsutils
+
+    # GNOME Apps
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals
     gnomeExtensions.workspaces-indicator-by-open-apps
-    gnome.dconf-editor
-    gnome.gnome-tweaks
+    dconf-editor
+    gnome-tweaks
   ];
 
   # GNOME Settings
