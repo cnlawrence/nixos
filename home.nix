@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
+
+let
+  starshipConfig = builtins.fromTOML (builtins.readFile ./config/gruvbox-rainbow.toml);
+in
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,6 +29,10 @@
     protonvpn-gui
     spotify
     qbittorrent
+    warp-terminal
+    starship
+
+    # inputs.zen-browser.packages."${system}".default
 
     # Cmd Utils
     # Networking
@@ -36,7 +44,11 @@
     gnomeExtensions.workspaces-indicator-by-open-apps
     dconf-editor
     gnome-tweaks
+
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ];})
   ];
+
+  fonts.fontconfig.enable = true;
 
   # GNOME Settings
   dconf.settings = {
@@ -133,6 +145,19 @@
       branch.autosetuprebase = "always";
       branch.master.rebase = true;
     };
+  };
+
+  # starship config
+  programs.starship = {
+    enable = true;
+    settings = starshipConfig;
+    # settings = ./config/gruvbox-rainbow.toml;
+  };
+
+  # bash config
+  programs.bash = {
+    enable = true;
+    bashrcExtra = "eval '$(starship init bash)'";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
