@@ -31,5 +31,15 @@
         }
       ];
     };
+    devShells.${system}.default = pkgs.mkShell {
+    packages = with pkgs; [
+      nodejs_23
+      bun      
+      # Optional: add other dependencies as needed
+    ];
+    shellHook = ''
+      echo "node ${pkgs.nodejs}/bin/node --version"
+    '';
+  };
   };
 }
