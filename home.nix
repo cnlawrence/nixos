@@ -32,8 +32,6 @@ in
     warp-terminal
     starship
 
-    # inputs.zen-browser.packages."${system}".default
-
     # Cmd Utils
     # Networking
     dnsutils
@@ -90,6 +88,7 @@ in
     "org/gnome/shell".favorite-apps = [
       "brave-browser.desktop"
       "code.desktop"
+      "dev.warp.Warp.desktop"
       "spotify.desktop"
     ];
     "org/gnome/shell".enabled-extensions = [
