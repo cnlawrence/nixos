@@ -89,8 +89,6 @@ in
     };
     "org/gnome/shell".favorite-apps = [
       "brave-browser.desktop"
-      "org.gnome.Console.desktop"
-      # "Alacritty.desktop"
       "code.desktop"
       "spotify.desktop"
     ];
