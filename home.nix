@@ -44,7 +44,10 @@ in
     dconf-editor
     gnome-tweaks
 
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ];})
+    # Console Fonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+   #(nerd-fonts.override { fonts = [ "JetBrainsMono" ];})
   ];
 
   fonts.fontconfig.enable = true;
