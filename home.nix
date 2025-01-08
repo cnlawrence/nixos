@@ -25,6 +25,7 @@ in
     brave
     # google-chrome
     git
+    direnv
     vscode
     protonvpn-gui
     spotify
@@ -51,7 +52,7 @@ in
   ];
 
   fonts.fontconfig.enable = true;
-
+  
   # GNOME Settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -156,10 +157,19 @@ in
     # settings = ./config/gruvbox-rainbow.toml;
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
+  };
+
   # bash config
   programs.bash = {
     enable = true;
-    bashrcExtra = "eval '$(starship init bash)'";
+    bashrcExtra = ''
+      eval '$(starship init bash)'
+      eval '$(direnv hook bash)'
+  '';
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
