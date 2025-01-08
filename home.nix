@@ -30,6 +30,7 @@ in
     spotify
     qbittorrent
     warp-terminal
+    ghostty
     starship
 
     # Cmd Utils
@@ -89,6 +90,7 @@ in
       "brave-browser.desktop"
       "code.desktop"
       "dev.warp.Warp.desktop"
+      "com.mitchellh.ghostty.desktop"
       "spotify.desktop"
     ];
     "org/gnome/shell".enabled-extensions = [
