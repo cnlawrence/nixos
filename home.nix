@@ -19,6 +19,8 @@ in
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  fonts.fontconfig.enable = true;
+  
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -33,10 +35,13 @@ in
     warp-terminal
     ghostty
     starship
+    
+    soulseekqt
 
     # Cmd Utils
     # Networking
     dnsutils
+    ansible
 
     # GNOME Apps
     gnomeExtensions.blur-my-shell
@@ -49,9 +54,7 @@ in
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
    #(nerd-fonts.override { fonts = [ "JetBrainsMono" ];})
-  ];
-
-  fonts.fontconfig.enable = true;
+  ];  
   
   # GNOME Settings
   dconf.settings = {
