@@ -38,10 +38,13 @@ in
     
     soulseekqt
 
+    ansible
+    ansible-lint
+
     # Cmd Utils
     # Networking
     dnsutils
-    ansible
+    sshpass
 
     # GNOME Apps
     gnomeExtensions.blur-my-shell
