@@ -36,7 +36,7 @@ in
     ghostty
     starship
     
-    soulseekqt
+    nicotine-plus
 
     ansible
     ansible-lint
